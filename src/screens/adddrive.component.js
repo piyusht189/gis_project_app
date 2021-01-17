@@ -71,7 +71,7 @@ class AddDriveScreen extends Component {
         let req_obj = {did: this.did_holder, worklog: JSON.stringify(temp), mobile: true};
         
         this.setState({loading: true});
-        fetch('https://drivecraftlab.com/backend/api/task/add_task.php?token=' + this.token, {
+        fetch('https://drivecraftlab.com/backend_gis/api/task/add_task.php?token=' + this.token, {
             method: 'POST',
             body: JSON.stringify(req_obj)
         })

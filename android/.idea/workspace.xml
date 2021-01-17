@@ -67,7 +67,7 @@
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="memory.settings.postsync.last.time.stamp" value="1592419707091" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
@@ -172,16 +172,25 @@
     </state>
     <state x="533" y="141" key="#app/0.23.1680.963@0.23.1680.963" timestamp="1602510972772" />
     <state x="533" y="141" key="#app/0.23.1680.965@0.23.1680.965" timestamp="1607790750025" />
-    <state x="100" y="123" width="1480" height="762" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1607790761584">
-      <screen x="0" y="23" width="1680" height="966" />
+    <state x="100" y="124" width="1480" height="758" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1610903217143">
+      <screen x="0" y="25" width="1680" height="960" />
     </state>
     <state x="100" y="123" width="1480" height="762" key="com.android.tools.idea.avdmanager.AvdListDialog/0.23.1680.966@0.23.1680.966" timestamp="1607790761584" />
-    <state x="489" y="336" key="com.intellij.ide.util.TipDialog" timestamp="1610283410768">
-      <screen x="0" y="25" width="1680" height="958" />
+    <state x="100" y="124" width="1480" height="758" key="com.android.tools.idea.avdmanager.AvdListDialog/0.25.1680.960@0.25.1680.960" timestamp="1610903217143" />
+    <state x="100" y="125" width="1480" height="765" key="com.android.tools.idea.avdmanager.AvdListDialog/0.25.1680.969@0.25.1680.969" timestamp="1610895539054" />
+    <state x="489" y="337" key="com.intellij.ide.util.TipDialog" timestamp="1610903208266">
+      <screen x="0" y="25" width="1680" height="959" />
     </state>
     <state x="489" y="336" key="com.intellij.ide.util.TipDialog/0.23.1680.962@0.23.1680.962" timestamp="1605623917650" />
     <state x="489" y="336" key="com.intellij.ide.util.TipDialog/0.23.1680.963@0.23.1680.963" timestamp="1605624865306" />
     <state x="489" y="337" key="com.intellij.ide.util.TipDialog/0.23.1680.966@0.23.1680.966" timestamp="1607790592648" />
     <state x="489" y="336" key="com.intellij.ide.util.TipDialog/0.25.1680.958@0.25.1680.958" timestamp="1610283410768" />
+    <state x="489" y="337" key="com.intellij.ide.util.TipDialog/0.25.1680.959@0.25.1680.959" timestamp="1610903208266" />
+    <state x="489" y="337" key="com.intellij.ide.util.TipDialog/0.25.1680.960@0.25.1680.960" timestamp="1610299535034" />
+    <state x="489" y="340" key="com.intellij.ide.util.TipDialog/0.25.1680.968@0.25.1680.968" timestamp="1610894222838" />
+    <state x="505" y="235" width="670" height="676" key="search.everywhere.popup" timestamp="1610906683812">
+      <screen x="0" y="25" width="1680" height="960" />
+    </state>
+    <state x="505" y="235" width="670" height="676" key="search.everywhere.popup/0.25.1680.960@0.25.1680.960" timestamp="1610906683812" />
   </component>
 </project>

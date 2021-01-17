@@ -9,10 +9,7 @@ import { createAppContainer } from 'react-navigation'
 import { createDrawerNavigator } from 'react-navigation-drawer'
 import NavigationDrawerStructure from './NavigationDrawerStructure'
 import DashboardScreen from '../screens/dashboard.component';
-import ScheduleScreen from '../screens/scheduled.component';
 import CompletedScreen from '../screens/completed.component';
-import ProfileScreen from '../screens/profile.component';
-import NotificationScreen from '../screens/notifications.component';
 import AddDriveScreen from '../screens/adddrive.component';
 
 
@@ -36,25 +33,7 @@ const Dashboard = createStackNavigator({
     });
 
 
-const Schedule = createStackNavigator({
-    First: {
-        screen: ScheduleScreen,
-        navigationOptions: ({ navigation }) => ({
-            title: 'Drives Schedule',
-            headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-            headerStyle: {
-                backgroundColor: '#272c36',
-            },
-            headerTintColor: '#fff',
 
-        }),
-    },
-},
-    {
-        defaultNavigationOptions: {
-            gesturesEnabled: false
-        }
-    });
 
 
 
@@ -79,46 +58,8 @@ const Completed = createStackNavigator({
     });
 
 
-const Profile = createStackNavigator({
-        First: {
-            screen: ProfileScreen,
-            navigationOptions: ({ navigation }) => ({
-                title: 'My Profile',
-                headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-                headerStyle: {
-                    backgroundColor: '#272c36',
-                },
-                headerTintColor: '#fff',
-    
-            }),
-        },
-    },
-        {
-            defaultNavigationOptions: {
-                gesturesEnabled: false
-            }
-        });
 
 
-const Notification = createStackNavigator({
-            First: {
-                screen: NotificationScreen,
-                navigationOptions: ({ navigation }) => ({
-                    title: 'Notifications',
-                    headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-                    headerStyle: {
-                        backgroundColor: '#272c36',
-                    },
-                    headerTintColor: '#fff',
-        
-                }),
-            },
-        },
-            {
-                defaultNavigationOptions: {
-                    gesturesEnabled: false
-                }
-            });
 const AddDrive = createStackNavigator({
     First: {
         screen: AddDriveScreen,
@@ -152,35 +93,11 @@ const MainNavigation = createDrawerNavigator({
         },
     },
 
-    Schedule: {
-        //Title
-        screen: Schedule,
-        navigationOptions: {
-            drawerLabel: 'Planned Drives',
-        },
-    },
-
     Completed: {
         //Title
         screen: Completed,
         navigationOptions: {
             drawerLabel: 'Completed Drives',
-        },
-    },
-
-    Profile: {
-        //Title
-        screen: Profile,
-        navigationOptions: {
-            drawerLabel: 'My Profile',
-        },
-    },
-
-    Notification: {
-        //Title
-        screen: Notification,
-        navigationOptions: {
-            drawerLabel: 'Notifications',
         },
     },
     AddDrive: {

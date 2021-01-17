@@ -57,7 +57,7 @@ class CompletedScreen extends Component {
   }
   getDrives = () => {
     this.setState({loading: true})
-    fetch('https://drivecraftlab.com/backend/api/task/get_completed_tasks.php?token=' + this.token, {
+    fetch('https://drivecraftlab.com/backend_gis/api/task/get_completed_tasks.php?token=' + this.token, {
         method: 'POST',
         body: JSON.stringify({
           did: value.aadid

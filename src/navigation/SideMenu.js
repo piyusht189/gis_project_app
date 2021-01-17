@@ -26,35 +26,8 @@ class SideMenu extends Component {
         this.did_holder = value.aadid;
         this.token = value.token;
         this.setState({ independent: value.independent  == 'yes' ? true : false })
-        this.getNotifications();
       }
-    getNotifications(){
-        fetch('https://drivecraftlab.com/backend/api/notifications/get_driver_notifications.php?token=' + this.token, {
-        method: 'POST',
-        body: JSON.stringify({
-          did: this.did_holder
-        })
-        })
-        .then((response) => response.json())
-        .then((responseJson) => {
-        
-        if(responseJson.status_code == 200){
-            let filtered = responseJson.notifications.filter(e => {
-                return e['read_yet'] == '0'
-            });
-            this.setState({notifications_count : filtered.length, loading: false});
-            
-            
-        }else if(responseJson.status_code == 800){
-            this.logoutRequest();
-        }else{
-            Toast.show(responseJson.message, Toast.LONG);
-        }
-        })
-        .catch((error) => {
-        console.error(error);
-        });
-    }
+   
     navigateToScreen = (route) => () => {
         const navigateAction = NavigationActions.navigate({
             routeName: route
@@ -80,7 +53,7 @@ class SideMenu extends Component {
         setTimeout(async () => {
             let user = await AsyncStorage.getItem('user');
             user = JSON.parse(user);
-            fetch('https://drivecraftlab.com/backend/api/driver/driver_logout.php?token=logout&aadid=' + user['aadid'], {
+            fetch('https://drivecraftlab.com/backend_gis/api/driver/driver_logout.php?token=logout&aadid=' + user['aadid'], {
                 method: 'POST',
                 body: JSON.stringify({})
               })
@@ -121,20 +94,9 @@ class SideMenu extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.headerContainer}>
-                    <Image resizeMode='contain' style={{ alignContent:'center',alignItems:'center',alignSelf:'center', height: 100, width: 200, marginLeft: 3, marginTop: 0, marginRight: 3 }} source={require('../assets/images/logo.png')} />
+                   <Text style={{ fontSize: 20, color: '#1b3466' }}>Hospital Logistics</Text>
                 </View>
                 <ScrollView>
-                <View>
-                        <TouchableOpacity onPress={this.navigateToScreen('Notification')}
-                            style={styles.navSectionStyle}>
-                            <Text style={[{backgroundColor: '#5670a3', marginBottom: 0},styles.navItemStyle1]}>
-                                <Icon
-                                    name='bell' size={25} iconStyle={{ marginLeft: 20, marginBottom: -20 }}
-                                    color='#fff'
-                                />     <Text style={{ color: '#fff' , fontWeight: 'bold', fontSize: 16}}>{ this.state.notifications_count ?  this.state.notifications_count + ' ' : '0 ' }</Text>new notifications
-              </Text>
-                        </TouchableOpacity>
-                    </View>
                     {this.state.independent &&
                             <View style={{marginTop: 1}}>
                                 <TouchableOpacity onPress={this.navigateToScreen('AddDrive')}
@@ -158,20 +120,9 @@ class SideMenu extends Component {
                                     name='th-large' size={25} iconStyle={{ marginLeft: 20, marginBottom: -10 }}
                                     color='#272c36'
                                 />      Dashboard
-              </Text>
+                            </Text>
                         </TouchableOpacity>
                     </View>
-                    <View>
-                        <TouchableOpacity style={styles.navSectionStyle} onPress={this.navigateToScreen('Schedule')}>
-                            <Text style={styles.navItemStyle} >
-                                <Icon
-                                    name='clock-o' size={28} iconStyle={{ marginLeft: 20 }}
-                                    color='#272c36'
-                                />      Planned Drives
-              </Text>
-                        </TouchableOpacity>
-                    </View>
-
                     <View>
                         <TouchableOpacity style={styles.navSectionStyle} onPress={this.navigateToScreen('Completed')}>
                             <Text style={styles.navItemStyle} >
@@ -183,17 +134,7 @@ class SideMenu extends Component {
                         </TouchableOpacity>
                     </View>
 
-                    <View>
-                        <TouchableOpacity style={styles.navSectionStyle} onPress={this.navigateToScreen('Profile')}>
-                            <Text style={styles.navItemStyle} >
-                                <Icon
-                                    name='user' size={30} iconStyle={{ marginLeft: 20 }}
-                                    color='#272c36'
-                                />      My Profile
-              </Text>
-                        </TouchableOpacity>
-                    </View>
-                    
+                
                     <View>
                         <TouchableOpacity style={styles.navSectionStyle} onPress={() => this.logout()}>
                             <Text style={styles.navItemStyle} >

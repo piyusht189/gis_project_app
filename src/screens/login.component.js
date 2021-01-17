@@ -86,13 +86,13 @@ class LoginScreen extends Component {
 
   
 
-  login = (email_p? ,password_p?) => {
+  login = (email_p ,password_p) => {
     if(this.state.enableLogin){
       RNAndroidLocationEnabler.promptForEnableLocationIfNeeded({interval: 10000, fastInterval: 5000})
           .then(data => { 
             if((this.state.email && this.state.password) || (email_p && password_p)){
               this.setState({spinner: true});
-              fetch('https://drivecraftlab.com/backend/api/driver/driver_login.php?token=login', {
+              fetch('https://drivecraftlab.com/backend_gis/api/driver/driver_login.php?token=login', {
                   method: 'POST',
                   body: JSON.stringify({
                     email: this.state.email ? this.state.email : email_p,
@@ -134,7 +134,7 @@ class LoginScreen extends Component {
     );
    }
   }
-   async requestLocationPermission2(flag?) 
+   async requestLocationPermission2(flag) 
    {
     try {
       let granted =  await PermissionsAndroid.check( PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
@@ -199,7 +199,7 @@ class LoginScreen extends Component {
     <SafeAreaView style={{ flex: 1 }}>
        
       <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Image resizeMode='contain' style={{height: 150,marginLeft: 100,marginBottom: 30,marginRight: 100, marginBottom: -5}} source={require('../assets/images/logo.png')} />
+      <Text style={{ fontSize: 30, marginBottom: 30 }}>Hospital Logistics</Text>
       <Spinner
           visible={this.state.spinner}
           overlayColor={'#aaaaaaff'}

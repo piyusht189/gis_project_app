@@ -45,7 +45,7 @@ const backgroundJob = {
         value = JSON.parse(value);
         let token = value.token ? value.token : '';
           if(position && position['coords'] && position['coords']['latitude']){
-                  fetch('https://drivecraftlab.com/backend/api/driver/driver_loc_submit.php?token=' + token, {
+                  fetch('https://drivecraftlab.com/backend_gis/api/driver/driver_loc_submit.php?token=' + token, {
                       method: 'POST',
                       body: JSON.stringify({
                         did: value.aadid,
@@ -150,7 +150,7 @@ class DashboardScreen extends Component {
     this.hid = value.hid;
     this.token = value.token;
     this.getDrives();
-    fetch('https://drivecraftlab.com/backend/api/ambulance_driver/driver_status_get.php?token=' + this.token, {
+    fetch('https://drivecraftlab.com/backend_gis/api/ambulance_driver/driver_status_get.php?token=' + this.token, {
                 method: 'POST',
                 body: JSON.stringify({
                   did: value.aadid
@@ -186,50 +186,9 @@ class DashboardScreen extends Component {
               console.error(error);
             });   
   }
-  rejectDrive(drive) {
-    Alert.alert(
-        'Reject Drive',
-        'Are you sure to reject this drive?',
-        [
-            {
-                text: 'Cancel',
-                onPress: () => console.log('Cancel Pressed'),
-                style: 'cancel',
-            },
-            { text: 'Reject', onPress: () => { this.rejectDriveRequest(drive.atid, drive.aadid);} },
-        ],
-        { cancelable: false },
-    );
-}
-rejectDriveRequest(tid, did) {
-  this.setState({loading: true});
-  if (tid || tid === 0) {
-    fetch('https://drivecraftlab.com/backend/api/task/reject_task.php?token=' + this.token, {
-      method: 'POST',
-      body: JSON.stringify({
-        did: did,
-        tid: tid
-      })
-    })
-    .then((response) => response.json())
-    .then((responseJson) => {
-      this.setState({loading: false});
-      if(responseJson.status_code == 200){
-        Toast.show(responseJson.message, Toast.LONG);
-        this.getDrives();
-      }else if(responseJson.status_code == 800){
-        this.logoutRequest();
-      }else{
-        Toast.show(responseJson.message, Toast.LONG);
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-  }
-}
+  
 getVehicles(hid){
-  fetch('https://drivecraftlab.com/backend/api/vehicles/get_available_vehicles.php?token=' + this.token, {
+  fetch('https://drivecraftlab.com/backend_gis/api/vehicles/get_available_vehicles.php?token=' + this.token, {
       method: 'POST',
       body: JSON.stringify({
         hid: this.hid
@@ -258,7 +217,7 @@ getVehicles(hid){
   });
 }  
 getDrives = (flag) => {
-    fetch('https://drivecraftlab.com/backend/api/task/get_tasks.php?token=' + this.token, {
+    fetch('https://drivecraftlab.com/backend_gis/api/task/get_tasks.php?token=' + this.token, {
         method: 'POST',
         body: JSON.stringify({
           did: value.aadid
@@ -502,7 +461,7 @@ getDrives = (flag) => {
         BackgroundJob.schedule(backgroundSchedule)
         .then(() =>  {
           
-          fetch('https://drivecraftlab.com/backend/api/ambulance_driver/driver_status_update.php?token=' + this.token, {
+          fetch('https://drivecraftlab.com/backend_gis/api/ambulance_driver/driver_status_update.php?token=' + this.token, {
                       method: 'POST',
                       body: JSON.stringify({
                         did: value.aadid,
@@ -540,7 +499,7 @@ getDrives = (flag) => {
       try {
         BackgroundJob.cancel({jobKey: 'myJob'})
           .then(() => {
-            fetch('https://drivecraftlab.com/backend/api/ambulance_driver/driver_status_update.php?token=' + this.token, {
+            fetch('https://drivecraftlab.com/backend_gis/api/ambulance_driver/driver_status_update.php?token=' + this.token, {
               method: 'POST',
               body: JSON.stringify({
                 did: value.aadid,
@@ -610,10 +569,6 @@ getDrives = (flag) => {
           Start Drive
       </Button>
       }
-    
-    <Button style={styles.button} appearance='outline' size='small' status='danger' onPress={() => this.rejectDrive(data.item)}>
-      Reject Drive
-    </Button>
     </View>
   );
 
@@ -710,7 +665,7 @@ getDrives = (flag) => {
                     },1000);
                   }else{
                     this.setState({loading : true});
-                    fetch('https://drivecraftlab.com/backend/api/task/plot_task.php?token=' + this.token, {
+                    fetch('https://drivecraftlab.com/backend_gis/api/task/plot_task.php?token=' + this.token, {
                         method: 'POST',
                         body: JSON.stringify({
                           pointer: 'init',
@@ -770,7 +725,7 @@ getDrives = (flag) => {
                           this.setState({work_key : work_key_plus, loading: false});
                     }else{
                       this.setState({loading : true});
-                    fetch('https://drivecraftlab.com/backend/api/task/plot_task.php?token=' + this.token, {
+                    fetch('https://drivecraftlab.com/backend_gis/api/task/plot_task.php?token=' + this.token, {
                         method: 'POST',
                         body: JSON.stringify({
                           pointer: work_key,
